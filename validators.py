@@ -44,5 +44,4 @@ class IntegerValidator(AbstractValidator, ABC):
 
     def is_valid(self, value) -> bool:
         # Не забываем про реализацию is_valid
-        print(f"IntegerValidator is_valid {value in self.range}")
         return value in self.range

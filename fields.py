@@ -41,7 +41,7 @@ class AbstractField(ABC):
 
 class CharField(AbstractField, ABC):
     def __init__(self, validators=None):
-        super().__init__()
+        # super().__init__()
         self.validators_list = [val.TextValidator(min_length=0, max_length=999)]
         if isinstance(validators, list) and validators:
             self.validators_list += validators
@@ -53,19 +53,19 @@ class CharField(AbstractField, ABC):
 
 class TextField(AbstractField, ABC):
     def __init__(self, validators=None):
-        super().__init__()
+        # super().__init__()
         self.validators_list = [val.TextValidator(min_length=1001, max_length=3000)]
         if isinstance(validators, list) and validators:
             self.validators_list += validators
 
     def is_valid(self, value) -> bool:
-        return all([item.is_valid(value) for item in self.validators_list])
+        return all(item.is_valid(value) for item in self.validators_list)
 
 
 class IntegerField(AbstractField, ABC):
 
     def __init__(self, validators=None):
-        super().__init__()
+        # super().__init__()
         self.validators_list = [val.IntegerValidator(min_value=128, max_value=1024)]
         if isinstance(validators, list) and validators:
             self.validators_list += validators
